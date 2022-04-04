@@ -1,0 +1,13 @@
+[package]
+name = "armv7-problems"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+tract-onnx = "0.16.3"
+
+[patch.crates-io]
+tract-linalg = { path = "../tract/linalg" }
