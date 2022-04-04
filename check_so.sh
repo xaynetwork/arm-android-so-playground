@@ -13,10 +13,11 @@ status() {
 
 # armeabi-v7a arm64-v8a x86 x86_64
 ARCH="${1:-armeabi-v7a}"
+NDK_API_LEVEL=21
 FILE="./out/${ARCH}/libarmv7_problems.so"
 
 cargo ndk \
-    --bindgen -t "arm64-v8a" -p "21" \
+    --bindgen -t "arm64-v8a" -p "${NDK_API_LEVEL}" \
     -o "./out" \
     build \
     --locked

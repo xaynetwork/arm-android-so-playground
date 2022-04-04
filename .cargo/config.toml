@@ -1,2 +1,2 @@
 [build]
-# rustflags = ["-C", "link-args=-Wl,-z,notext"]
+rustflags = ["-C", "link-args=-Wl,-z,relro,-z,now"]
