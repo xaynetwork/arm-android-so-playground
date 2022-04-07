@@ -9,5 +9,6 @@ crate-type = ["cdylib"]
 [dependencies]
 tract-onnx = "0.16.3"
 
-[patch.crates-io]
-tract-linalg = { path = "../tract/linalg" }
+[patch.crates-io.tract-linalg]
+git = "https://github.com/xaynetwork/tract.git"
+branch = "android-relocation-patch"

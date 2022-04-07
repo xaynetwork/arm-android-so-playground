@@ -17,15 +17,16 @@ NDK_API_LEVEL=21
 FILE="./out/${ARCH}/libarmv7_problems.so"
 
 cargo ndk \
-    --bindgen -t "arm64-v8a" -p "${NDK_API_LEVEL}" \
+    --bindgen -t "${ARCH}" -p "${NDK_API_LEVEL}" \
     -o "./out" \
     build \
     --locked
 
+SCAN_RESULT="$(scanelf -qT "$FILE")"
 
-if [[ "$(scanelf -qT "$FILE" | tee scanelf.txt | wc -l)" -gt 0 ]]; then
+if [[ ! -z "$SCAN_RESULT" ]]; then
     status "${red}SO with relocations"
-    cat scanelf.txt >&2
+    status "$SCAN_RESULT"
     exit 1
 else
     status "${green}no relocations found"

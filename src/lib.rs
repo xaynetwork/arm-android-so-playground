@@ -30,8 +30,8 @@ fn _foo(mut bytes: &[u8], token_size: usize) -> Result<u32, Abort> {
     }
 
 
-    let t1 = Tensor::from_shape(&[2, 2], &[123i64, 1, 33, 4])?;
-    let t2 = Tensor::from_shape(&[2, 2], &[123i64, 1, 33, 4])?;
+    let t1 = Tensor::zero::<i64>(&[2, 2])?;
+    let t2 = Tensor::zero::<i64>(&[2, 2])?;
     let outputs = plan.run(tvec![t1, t2])?;
 
     Ok(outputs[0].as_slice()?.iter().fold(0, |a,b|a.wrapping_add(*b)))
